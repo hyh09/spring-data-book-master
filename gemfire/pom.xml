@@ -1,0 +1,70 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>spring-data-book-gemfire</artifactId>
+
+    <name>Spring Data Book - GemFire</name>
+
+    <parent>
+        <groupId>com.oreilly.springdata</groupId>
+        <artifactId>spring-data-book</artifactId>
+        <version>1.0.0.BUILD-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <dependencies>
+        <!--[ERROR] Failed to execute goal on project spring-data-book-gemfire:
+         Could not resolve dependencies for project com.oreilly.springdata:spring-data-book-gemfire:jar:1.0.0.BUILD-SNAPSHOT:
+          Failed to collect dependencies at org.springframework.data:spring-data-gemfire:jar:1.3.0.M1 -> com.gemstone.gemfire:gemfire:jar:7.0:
+           Failed to read artifact descriptor for com.gemstone.gemfire:gemfire:jar:7.0:
+            Could not transfer artifact com.gemstone.gemfire:gemfire:pom:7.0 from/to spring-milestones (https://repo.springsource.org/libs-milestone):
+             Authorization failed for https://repo.springsource.org/libs-milestone/com/gemstone/gemfire/gemfire/7.0/gemfire-7.0.pom 403 Forbidden -> [Help 1]
+
+       -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-gemfire</artifactId>
+            <version>1.3.0.M1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-expression</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <forkMode>always</forkMode>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>gemstone</id>
+            <url>http://dist.gemstone.com.s3.amazonaws.com/maven/release/</url>
+        </repository>
+        <repository>
+            <id>spring-milestones</id>
+            <url>https://repo.springsource.org/libs-milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+</project>
